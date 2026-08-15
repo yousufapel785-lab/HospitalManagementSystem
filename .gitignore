@@ -1,0 +1,21 @@
+﻿# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core
+appsettings.Development.json
+
+# SQLite database
+*.db
+*.db-shm
+*.db-wal
