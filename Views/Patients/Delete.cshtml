@@ -1,0 +1,107 @@
+﻿@model HospitalManagementSystem.Models.Patient
+
+@{
+    ViewData["Title"] = "Delete Patient";
+}
+
+<div class="container mt-4">
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Delete Patient</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="alert alert-warning">
+                        <strong>Are you sure?</strong>
+                        Do you want to permanently delete this patient?
+                    </div>
+
+                    <dl class="row">
+
+                        <dt class="col-sm-4">
+                            Patient ID
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.PatientId
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Full Name
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.FullName
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Gender
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Gender
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Date of Birth
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.DateOfBirth.ToString("dd-MM-yyyy")
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Phone
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Phone
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Blood Group
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.BloodGroup
+                        </dd>
+
+                    </dl>
+
+
+                    <form asp-action="Delete" method="post">
+
+                        <input type="hidden"
+                               asp-for="PatientId" />
+
+                        <button type="submit"
+                                class="btn btn-danger">
+                            Yes, Delete
+                        </button>
+
+                        <a asp-action="Index"
+                           class="btn btn-secondary">
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

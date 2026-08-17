@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HospitalManagementSystem.Models.Patient>
+
+@{
+    ViewData["Title"] = "Patient Management";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Patient Management</h1>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Add New Patient
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No patients found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Gender</th>
+                        <th>Date of Birth</th>
+                        <th>Phone</th>
+                        <th>Blood Group</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var patient in Model)
+                    {
+                        <tr>
+                            <td>@patient.PatientId</td>
+                            <td>@patient.FullName</td>
+                            <td>@patient.Gender</td>
+                            <td>@patient.DateOfBirth.ToString("dd-MM-yyyy")</td>
+                            <td>@patient.Phone</td>
+                            <td>@patient.BloodGroup</td>
+
+                            <td>
+                                <a asp-action="Details"
+                                   asp-route-id="@patient.PatientId"
+                                   class="btn btn-sm btn-info">
+                                    Details
+                                </a>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@patient.PatientId"
+                                   class="btn btn-sm btn-warning">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@patient.PatientId"
+                                   class="btn btn-sm btn-danger">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+</div>
