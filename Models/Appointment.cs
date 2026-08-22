@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalManagementSystem.Models
 {
@@ -8,21 +9,35 @@ namespace HospitalManagementSystem.Models
         public int AppointmentId { get; set; }
 
         [Required]
+        [Display(Name = "Patient")]
         public int PatientId { get; set; }
 
-        [Required]
-        public int DoctorId { get; set; }
+        [ForeignKey("PatientId")]
+        public Patient? Patient { get; set; }
 
         [Required]
+        [Display(Name = "Doctor")]
+        public int DoctorId { get; set; }
+
+        [ForeignKey("DoctorId")]
+        public Doctor? Doctor { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Appointment Date")]
         public DateTime AppointmentDate { get; set; }
 
         [Required]
-        public string AppointmentTime { get; set; } = string.Empty;
+        [DataType(DataType.Time)]
+        [Display(Name = "Appointment Time")]
+        public TimeSpan AppointmentTime { get; set; }
 
-        [StringLength(500)]
+        [Required]
+        [StringLength(200)]
         public string Reason { get; set; } = string.Empty;
 
         [Required]
-        public string Status { get; set; } = "Scheduled";
+        [StringLength(50)]
+        public string Status { get; set; } = "Pending";
     }
 }

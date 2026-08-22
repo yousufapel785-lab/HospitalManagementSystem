@@ -1,0 +1,67 @@
+﻿@model HospitalManagementSystem.Models.Department
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<div class="container mt-4">
+
+    <h2>Department Details</h2>
+
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            Department ID
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DepartmentId
+        </dd>
+
+        <dt class="col-sm-3">
+            Department Name
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DepartmentName
+        </dd>
+
+        <dt class="col-sm-3">
+            Description
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Description
+        </dd>
+
+        <dt class="col-sm-3">
+            Location
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Location
+        </dd>
+
+        <dt class="col-sm-3">
+            Contact Number
+        </dt>
+        <dd class="col-sm-9">
+            @Model.ContactNumber
+        </dd>
+
+    </dl>
+
+    <div class="mt-3">
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.DepartmentId"
+           class="btn btn-warning">
+            Edit
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to List
+        </a>
+
+    </div>
+
+</div>

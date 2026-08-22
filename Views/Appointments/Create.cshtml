@@ -1,0 +1,142 @@
+﻿@model HospitalManagementSystem.Models.Appointment
+
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+<div class="container mt-4">
+
+    <h2>Book Appointment</h2>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <form asp-action="Create" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger">
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="PatientId"
+                           class="form-label">
+                        Patient
+                    </label>
+
+                    <select asp-for="PatientId"
+                            asp-items="ViewBag.Patients"
+                            class="form-select">
+
+                        <option value="">
+                            -- Select Patient --
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="DoctorId"
+                           class="form-label">
+                        Doctor
+                    </label>
+
+                    <select asp-for="DoctorId"
+                            asp-items="ViewBag.Doctors"
+                            class="form-select">
+
+                        <option value="">
+                            -- Select Doctor --
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="AppointmentDate"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="AppointmentDate"
+                           class="form-control"
+                           type="date" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="AppointmentTime"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="AppointmentTime"
+                           class="form-control"
+                           type="time" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Reason"
+                           class="form-label">
+                    </label>
+
+                    <textarea asp-for="Reason"
+                              class="form-control"
+                              rows="3">
+                    </textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Status"
+                           class="form-label">
+                    </label>
+
+                    <select asp-for="Status"
+                            class="form-select">
+
+                        <option>Pending</option>
+                        <option>Confirmed</option>
+                        <option>Completed</option>
+                        <option>Cancelled</option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Book Appointment
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+}

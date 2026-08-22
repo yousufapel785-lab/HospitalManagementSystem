@@ -27,5 +27,6 @@ namespace HospitalManagementSystem.Models
         public string AvailableTime { get; set; } = string.Empty;
 
         public int DepartmentId { get; set; }
+        public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 }
